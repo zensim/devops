@@ -1,9 +1,10 @@
-service: serverless-service
-#service: ${env:PRJ}-service
+#service: serverless-service
+service: ${env:PRJ}-service
 custom:
   secrets:
     dev: 
-      db_creds: ${ssm:/aws/reference/secretsmanager/${env:ENV}/db-creds~true}
+      #db_creds: ${ssm:/aws/reference/secretsmanager/${env:ENV}/db-creds~true}
+      db_creds: ${ssm:/aws/reference/secretsmanager/${env:ENV}/rds-secret~true}
       #db_user: ${ssm:/${env:ENV}/db-user}
       #db_host: ${ssm:/${env:ENV}/db-host}
       #db_password: ${ssm:/${env:ENV}/db-password}
@@ -15,7 +16,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   deploymentBucket:
-    name: ${ssm:/${env:ENV}/lambda-bucket}
+    name: ${ssm:/${env:ENV}/lambda-s3-bucket}
   role: ${ssm:/${env:ENV}/lambda-role-arn}
   stage:  ${opt:stage,'dev'}
   region: us-east-1
