@@ -36,10 +36,12 @@ provider:
     ##REGION: ${self:custom.secrets.${self:provider.stage}.region}
     SERVICE_NAME: ${self:service}
     STAGE: ${self:provider.stage}
+  #apiGateway:
+    #shouldStartNameWithService: true #in serverless 3.0 the api naming format is ${service}-${stage}
 
 functions:
   currentTime:
-    handler: handler.endpoint
+    handler: handler.handler
     events:
       - http:
           path: ping
