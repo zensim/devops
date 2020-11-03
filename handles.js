@@ -1,5 +1,5 @@
 
-exports.handler = async function(event) {
+exports.endpoint = async function(event) {
     const current_time = Date.now().current_time;
     //console.log("request:", JSON.stringify(event, undefined, 2));
     return {

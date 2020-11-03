@@ -1,4 +1,5 @@
-service: ${env:PRJ}-service
+service: serverless-service
+#service: ${env:PRJ}-service
 custom:
   secrets:
     dev: 
@@ -25,13 +26,13 @@ provider:
       - ${ssm:/${env:ENV}/private-subnet-1}
       - ${ssm:/${env:ENV}/private-subnet-2}
   environment:
-    #DB_NAME: ${self:custom.secrets.${self:provider.stage}.db_name}
+    ##DB_NAME: ${self:custom.secrets.${self:provider.stage}.db_name}
     DB_USER: ${self:custom.secrets.${self:provider.stage}.db_creds.username}
     DB_PASSWORD: ${self:custom.secrets.${self:provider.stage}.db_creds.password}
-    #DB_HOST: ${self:custom.secrets.${self:provider.stage}.db_host}
+    ##DB_HOST: ${self:custom.secrets.${self:provider.stage}.db_host}
     DB_PORT: ${self:custom.secrets.${self:provider.stage}.db_port}
-    #ACCOUNT_ID: ${self:custom.secrets.${self:provider.stage}.account_id}
-    #REGION: ${self:custom.secrets.${self:provider.stage}.region}
+    ##ACCOUNT_ID: ${self:custom.secrets.${self:provider.stage}.account_id}
+    ##REGION: ${self:custom.secrets.${self:provider.stage}.region}
     SERVICE_NAME: ${self:service}
     STAGE: ${self:provider.stage}
 
